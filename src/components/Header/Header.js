@@ -7,7 +7,7 @@ import Logo from '../Logo';
 import MobileMenu from '../MobileMenu';
 import SuperHeader from '../SuperHeader';
 import UnstyledButton from '../UnstyledButton';
-
+import VisuallyHidden from '../VisuallyHidden';
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
 
@@ -20,28 +20,29 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
-        <Nav>
+        </LogoWrapper>
+        <DesktopNav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
-        </Nav>
-        <MobileNav>
-          <UnstyledButton>
+        </DesktopNav>
+        <MobileActions>
+          <ShoppingBagButton>
             <Icon id="shopping-bag" strokeWidth={1} />
-          </UnstyledButton>
+            <VisuallyHidden>Open cart</VisuallyHidden>
+          </ShoppingBagButton>
           <UnstyledButton>
             <Icon id="search" strokeWidth={1} />
           </UnstyledButton>
           <UnstyledButton onClick={() => setShowMobileMenu(!showMobileMenu)}>
             <Icon id="menu" strokeWidth={1} />
           </UnstyledButton>
-        </MobileNav>
+        </MobileActions>
         <RightSide />
       </MainHeader>
 
@@ -59,37 +60,51 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  border-top: 4px solid ${COLORS.gray[900]};
+
+  @media ${QUERIES.tabletAndDown} {
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
   gap: 48px;
   margin: 0px 48px;
 
-  @media screen and (${QUERIES.tabletAndDown}) {
+  @media ${QUERIES.tabletAndDown} {
     display: none;
   }
 `;
 
-const MobileNav = styled.nav`
+const MobileActions = styled.nav`
   display: none;
   
-  @media screen and (${QUERIES.tabletAndDown}) {
+  @media ${QUERIES.tabletAndDown} {
     display: flex;
-    gap: 36px;
+    gap: 32px;
   }
 
-  @media screen and (${QUERIES.mobileAndDown}) {
-    gap: 20px;
+  @media ${QUERIES.mobileAndDown} {
+    gap: 16px;
   }
+`;
+
+const ShoppingBagButton = styled(UnstyledButton)`
+  transform: translateX(-2px);
 `;
 
 const Side = styled.div`
   flex: 1;
 `;
 
+const LogoWrapper = styled(Side)`
+  flex: revert;
+`;
+
 const RightSide = styled(Side)`
-  @media screen and (${QUERIES.tabletAndDown}) {
+  @media ${QUERIES.tabletAndDown} {
     display: none;
   }
 `;

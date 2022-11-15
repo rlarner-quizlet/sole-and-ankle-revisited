@@ -23,6 +23,6 @@ const BREAKPOINTS = {
 }
 
 export const QUERIES = {
-  'mobileAndDown': `max-width: ${BREAKPOINTS.mobileMax / 16}rem`,
-  'tabletAndDown': `max-width: ${BREAKPOINTS.tabletMax / 16}rem`,
+  'mobileAndDown': `screen and (max-width: ${BREAKPOINTS.mobileMax / 16}rem)`,
+  'tabletAndDown': `screen and (max-width: ${BREAKPOINTS.tabletMax / 16}rem)`,
 }

@@ -21,8 +21,12 @@ const App = () => {
 const Main = styled.main`
   padding: 64px 32px;
 
-  @media screen and (${QUERIES.tabletAndDown}) {
+  @media ${QUERIES.tabletAndDown} {
     padding: 48px 32px;
+  }
+
+  @media ${QUERIES.mobileAndDown} {
+    padding: 48px 16px;
   }
 `;
 

@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import { QUERIES } from '../../constants';
 
 function getHeight({ axis, size }) {
   return axis === 'horizontal' ? 1 : size;
@@ -14,10 +13,6 @@ const Spacer = styled.span`
   min-width: ${getWidth}px;
   height: ${getHeight}px;
   min-height: ${getHeight}px;
-
-  @media screen and (${QUERIES.tabletAndDown}) {
-    display: none;
-  }
 `;
 
 export default Spacer;
