@@ -34,7 +34,7 @@ const Header = () => {
         <MobileActions>
           <ShoppingBagButton>
             <Icon id="shopping-bag" strokeWidth={1} />
-            <VisuallyHidden>Open cart</VisuallyHidden>
+            <VisuallyHidden><div>Open cart</div></VisuallyHidden>
           </ShoppingBagButton>
           <UnstyledButton>
             <Icon id="search" strokeWidth={1} />

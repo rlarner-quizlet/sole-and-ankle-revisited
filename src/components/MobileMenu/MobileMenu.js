@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 
-import { QUERIES } from '../../constants';
+import { COLORS, QUERIES, WEIGHTS } from '../../constants';
 
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
@@ -15,49 +15,87 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    // <DialogOverlay isOpen={isOpen} onDismiss={onDismiss}>
-    //   <DialogContent>
-    <Wrapper>
-      <UnstyledButton onClick={onDismiss}><Icon id="close" /></UnstyledButton>
+    <Overlay isOpen={isOpen} onDismiss={onDismiss}>
+      <Content>
+        <CloseButton onClick={onDismiss}>
+          <VisuallyHidden>
+            Dismiss menu
+          </VisuallyHidden>
+          <Icon id="close" />
+        </CloseButton>
+      <Filler />
       <Nav>
-        <a href="/sale">Sale</a>
-        <a href="/new">New&nbsp;Releases</a>
-        <a href="/men">Men</a>
-        <a href="/women">Women</a>
-        <a href="/kids">Kids</a>
-        <a href="/collections">Collections</a>
+        <NavLink href="/sale">Sale</NavLink>
+        <NavLink href="/new">New&nbsp;Releases</NavLink>
+        <NavLink href="/men">Men</NavLink>
+        <NavLink href="/women">Women</NavLink>
+        <NavLink href="/kids">Kids</NavLink>
+        <NavLink href="/collections">Collections</NavLink>
       </Nav>
       <Footer>
         <a href="/terms">Terms and Conditions</a>
         <a href="/privacy">Privacy Policy</a>
         <a href="/contact">Contact Us</a>
       </Footer>
-    </Wrapper>
-    // </DialogContent>
-    // </DialogOverlay>
+     </Content>
+     </Overlay>
 
   );
 };
 
-const Wrapper = styled.div`
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-between;
-  position: absolute;
+const Overlay = styled(DialogOverlay)`
+  position: fixed;
+  top: 0;
+  left: 0;
   right: 0;
-  z-index: 100;
+  bottom: 0;
+  background-color: hsl(220deg 5% 40% / 0.8);
+  display: flex;
+  justify-content: flex-end;
 `;
 
+const Content = styled(DialogContent)`
+  background-color: white;
+height: 100%;
+width: 300px;
+display: flex;
+flex-direction: column;
+padding: 32px;
+`;
+
+const CloseButton = styled(UnstyledButton)`
+  position: absolute;
+  padding: 16px;
+  top: 10px;
+  right: 0;
+`;
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
+  gap: 16px;
 `;
 
+const NavLink = styled.a`
+  color: ${COLORS.gray[900]};
+  font-weight: ${WEIGHTS.medium};
+  text-decoration: none;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+
+  &:first-of-type {
+    color: ${COLORS.secondary};
+  }
+`;
+
+const Filler = styled.div`
+  flex: 1;
+  `;
+
 const Footer = styled.footer`
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 `;
 
 export default MobileMenu;
