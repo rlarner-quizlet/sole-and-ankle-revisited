@@ -66,8 +66,8 @@ padding: 32px;
 const CloseButton = styled(UnstyledButton)`
   position: absolute;
   padding: 16px;
-  top: 10px;
-  right: 0;
+  top: 26px;
+  right: 16px;
 `;
 const Nav = styled.nav`
   display: flex;
