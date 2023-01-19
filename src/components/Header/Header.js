@@ -59,8 +59,8 @@ const MainHeader = styled.div`
   overflow: auto;
   align-items: baseline;
   padding: 18px 32px;
-  border-bottom: 1px solid ${COLORS.gray[300]};
-  border-top: 4px solid ${COLORS.gray[900]};
+  border-bottom: 1px solid var(--color-gray-300);
+  border-top: 4px solid var(--color-gray-900);
 
   @media ${QUERIES.tabletAndDown} {
     align-items: center;
@@ -113,11 +113,11 @@ const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
 
   &:first-of-type {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
   }
 `;
 
